@@ -9,7 +9,10 @@ from selenium.common.exceptions import TimeoutException
 import pandas as pd
 import time
 from openpyxl import load_workbook
-
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service as ChromiumService
+from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.core.utils import ChromeType
 
 
 pd.options.display.float_format = "{:,.2f}".format
@@ -21,16 +24,18 @@ st.title(':eyes: Fees Web :red[Scraping]')
 st.text('Please upload the file with the list of Invoices.')
 
 
-
-
 @st.cache()
 def generate_driver():
     login_url = "https://app.getnabis.com/sign-in"
     options = webdriver.ChromeOptions()
     options.add_argument('--incognito')
+    options.add_argument('--headless')
     options.add_experimental_option('detach',True)
-    driver = webdriver.Chrome(options=options)
+    #service = Service(ChromeDriverManager().install())
+    #driver = webdriver.Chrome(options=options)
+    driver = webdriver.Chrome(service=ChromiumService(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install()))
 
+    
     driver.get(login_url)
     return driver
 
