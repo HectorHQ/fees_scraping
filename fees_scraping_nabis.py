@@ -10,9 +10,9 @@ import pandas as pd
 import time
 from openpyxl import load_workbook
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.chrome.service import Service as ChromiumService
+from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
-from webdriver_manager.core.utils import ChromeType
+
 
 
 pd.options.display.float_format = "{:,.2f}".format
@@ -33,7 +33,7 @@ def generate_driver():
     options.add_experimental_option('detach',True)
     #service = Service(ChromeDriverManager().install())
     #driver = webdriver.Chrome(options=options)
-    driver = webdriver.Chrome(service=ChromiumService(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install()))
+    driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install())) 
 
     
     driver.get(login_url)
