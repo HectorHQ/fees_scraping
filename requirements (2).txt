@@ -1,6 +1,0 @@
-streamlit
-seleniumbase
-webdriver-manager
-openpyxl
-pandas
-time
