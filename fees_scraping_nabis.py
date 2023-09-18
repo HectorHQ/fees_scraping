@@ -31,9 +31,9 @@ def generate_driver():
     options.add_argument('--incognito')
     options.add_argument('--headless')
     options.add_experimental_option('detach',True)
-    #service = Service(ChromeDriverManager().install())
-    #driver = webdriver.Chrome(options=options)
-    driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install())) 
+    service = Service(ChromeDriverManager().install())
+    driver = webdriver.Chrome(service=service,options=options)
+ 
 
     
     driver.get(login_url)
