@@ -1,15 +1,15 @@
 import streamlit as st
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver import Keys, ActionChains
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.common import NoSuchElementException, ElementNotInteractableException
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException
+from seleniumbase import webdriver
+from seleniumbase.webdriver.common.by import By
+from seleniumbase.webdriver import Keys, ActionChains
+from seleniumbase.webdriver.support.wait import WebDriverWait
+from seleniumbase.common import NoSuchElementException, ElementNotInteractableException
+from seleniumbase.webdriver.support import expected_conditions as EC
+from seleniumbase.common.exceptions import TimeoutException
 import pandas as pd
 import time
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.chrome.service import Service
+from seleniumbase.webdriver.chrome.options import Options
+from seleniumbase.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from openpyxl import load_workbook
 
