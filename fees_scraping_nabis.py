@@ -9,9 +9,12 @@ from selenium.common.exceptions import TimeoutException
 import pandas as pd
 import time
 from openpyxl import load_workbook
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
+#from selenium.webdriver.chrome.options import Options
+#from selenium.webdriver.chrome.service import Service
+#from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.firefox.service import Service
+from webdriver_manager.firefox import GeckoDriverManager
 
 
 
@@ -27,13 +30,20 @@ st.text('Please upload the file with the list of Invoices.')
 @st.cache()
 def generate_driver():
     login_url = "https://app.getnabis.com/sign-in"
-    options = webdriver.ChromeOptions()
-    options.add_argument('--incognito')
-    options.add_argument('--headless')
-    options.add_experimental_option('detach',True)
-    service = Service(ChromeDriverManager().install())
-    driver = webdriver.Chrome(service=service,options=options)
- 
+    #options = webdriver.ChromeOptions()
+    #options.add_argument('--incognito')
+    #options.add_argument('--headless')
+    #options.add_experimental_option('detach',True)
+    #service = Service(ChromeDriverManager().install())
+    #driver = webdriver.Chrome(service=service,options=options)
+    firefoxOptions = Options()
+    firefoxOptions.add_argument("--headless")
+    firefoxOptions.add_argument("--incognito")
+    service = Service(GeckoDriverManager().install())
+    driver = webdriver.Firefox(
+        options=firefoxOptions,
+        service=service,
+    ) 
 
     
     driver.get(login_url)
